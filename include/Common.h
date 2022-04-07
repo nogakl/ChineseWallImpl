@@ -23,11 +23,11 @@ namespace ChineseWall {
 	};
 	struct AccessList {
 	private:
-		std::map<std::shared_ptr<Subject>, std::list<Permission>> m_accessList;
+		std::map<std::string, std::list<Permission>> m_accessList;
 	public:
-		Status GetAccess(const Subject& subject, Permission permission);
-		Status AddPermission(const Subject& subject, Permission permission);
-		Status RemovePermission(const Subject& subject, Permission permission);
-		Status RemoveSubject(const Subject& subject);
+		Status GetAccess(std::string subject, Permission permission);
+		Status AddPermission(std::string subject, Permission permission);
+		Status RemovePermission(std::string subject, Permission permission);
+		Status RemoveSubject(std::string subject);
 	};
 }

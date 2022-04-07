@@ -7,12 +7,12 @@ namespace ChineseWall {
 	class Dataset {
 	public:
 		Dataset() = delete;
-		Dataset(std::string name, std::shared_ptr<ConflictInterest> conflictInterest);
-		Status ReadAccess(const Subject& subject);
-		Status WriteAccess(const Subject& subject);
+		Dataset(std::string name, ConflictInterest &conflictInterest);
+		Status ReadAccess(Subject& subject);
+		Status WriteAccess(Subject& subject);
 	private:
 		std::string m_name;
-		std::shared_ptr<ConflictInterest> m_conflictInterest;
+		ConflictInterest &m_conflictInterest;
 		AccessList m_accessList;
 	};
 }

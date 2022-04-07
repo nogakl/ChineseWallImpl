@@ -11,15 +11,15 @@ namespace ChineseWall {
 			return instance;
 		}
 		Status AddSubject(std::string name);
-		Status AddObject(std::string name, std::string datasetName, const Subject &owner);
+		Status AddObject(std::string name, std::string datasetName, Subject &owner);
 		Status AddDataset(std::string name, std::string conflictInterestName);
 		Status AddConflictInterest(std::string name);
 
 	private:
 		explicit Manager() {}
-		std::map<std::string, std::shared_ptr<Subject>> m_subjects;
-		std::map<std::string, std::shared_ptr<Object>> m_objects;
-		std::map<std::string, std::shared_ptr<Dataset>> m_datasets;
-		std::map<std::string, std::shared_ptr<ConflictInterest>> m_conflictsInterests;
+		std::map<std::string, std::unique_ptr<Subject>> m_subjects;
+		std::map<std::string, std::unique_ptr<Object>> m_objects;
+		std::map<std::string, std::unique_ptr<Dataset>> m_datasets;
+		std::map<std::string, std::unique_ptr<ConflictInterest>> m_conflictsInterests;
 	};
 }

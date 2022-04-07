@@ -9,8 +9,7 @@ namespace ChineseWall {
 		Status AddObject(std::string name, std::string datasetName);
 		Status AddDataset(std::string name, std::string ciName);
 		Status AddConflictInterest(std::string name);
-
-
+		std::string GetName();
 	private:
 		std::string m_name; 
 	};

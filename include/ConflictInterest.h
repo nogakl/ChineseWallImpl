@@ -5,8 +5,9 @@ namespace ChineseWall {
 	class Subject;
 	class ConflictInterest {
 	public:
-		Status ReadAccess(const Subject& subject);
-		Status WriteAccess(const Subject& subject);
+		explicit ConflictInterest(std::string name);
+		Status ReadAccess(Subject& subject);
+		Status WriteAccess(Subject& subject);
 	private:
 		std::string m_name;
 		AccessList m_accessList;

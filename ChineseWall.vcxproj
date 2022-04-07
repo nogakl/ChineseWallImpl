@@ -142,10 +142,10 @@
     <ClCompile Include="include\Common.cpp" />
     <ClCompile Include="src\ConflictInterest.cpp" />
     <ClCompile Include="src\Dataset.cpp" />
-    <ClCompile Include="src\DiContainer.cpp" />
     <ClCompile Include="src\Directory.cpp" />
     <ClCompile Include="src\File.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Manager.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Subject.cpp" />
   </ItemGroup>
@@ -153,9 +153,9 @@
     <ClInclude Include="include\Common.h" />
     <ClInclude Include="include\ConflictInterest.h" />
     <ClInclude Include="include\Dataset.h" />
-    <ClInclude Include="include\DiContainer.h" />
     <ClInclude Include="include\Directory.h" />
     <ClInclude Include="include\File.h" />
+    <ClInclude Include="include\Manager.h" />
     <ClInclude Include="include\Subject.h" />
     <ClInclude Include="Object.h" />
   </ItemGroup>

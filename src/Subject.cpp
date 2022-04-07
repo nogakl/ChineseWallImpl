@@ -1,5 +1,6 @@
-﻿#include "..\include\Subject.h"
-#include "..\include\DiContainer.h"
+﻿#include "..\include\Manager.h"
+#include "..\include\Subject.h"
+
 
 namespace ChineseWall {
     Subject::Subject(std::string name) :
@@ -25,5 +26,9 @@ namespace ChineseWall {
     Status Subject::AddConflictInterest(std::string name)
     {
         return Manager::Instance().AddConflictInterest(name);
+    }
+    std::string Subject::GetName()
+    {
+        return m_name;
     }
 }
