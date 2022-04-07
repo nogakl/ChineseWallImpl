@@ -139,26 +139,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="include\Common.cpp" />
     <ClCompile Include="src\ConflictInterest.cpp" />
     <ClCompile Include="src\Dataset.cpp" />
     <ClCompile Include="src\DiContainer.cpp" />
     <ClCompile Include="src\Directory.cpp" />
     <ClCompile Include="src\File.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Subject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Common.h" />
     <ClInclude Include="include\ConflictInterest.h" />
-    <ClInclude Include="include\Constants.h" />
     <ClInclude Include="include\Dataset.h" />
     <ClInclude Include="include\DiContainer.h" />
     <ClInclude Include="include\Directory.h" />
     <ClInclude Include="include\File.h" />
     <ClInclude Include="include\Subject.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="Permissions.h" />
-    <ClInclude Include="Status.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

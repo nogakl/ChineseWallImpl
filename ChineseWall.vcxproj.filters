@@ -36,15 +36,15 @@
     <ClCompile Include="src\DiContainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
+    <ClCompile Include="include\Common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\Dataset.h">
@@ -65,10 +65,7 @@
     <ClInclude Include="include\ConflictInterest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Status.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Permissions.h">
+    <ClInclude Include="include\Common.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

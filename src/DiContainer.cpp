@@ -1,20 +1,53 @@
-﻿// ChineseWall.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+﻿#include "..\include\DiContainer.h"
 
-#include <iostream>
+namespace ChineseWall {
 
-int main()
-{
-    std::cout << "Hello World!\n";
+	Status Manager::AddSubject(std::string name)
+	{
+		if (m_subjects.at(name) != nullptr) {
+			std::pair<std::string, std::shared_ptr<Subject>> newElement = { name, std::make_shared<Subject>(name) };
+			return Status::Success;
+		}
+		printf("Subject already exists!\n");
+		return Status::Failure;
+	}
+	Status Manager::AddObject(std::string name, std::string datasetName, const Subject& owner)
+	{
+		if (m_objects.at(name) != nullptr) {
+			auto ds = m_datasets.at(datasetName);
+			if (ds == nullptr)
+			{
+				printf("can't find ds- failed to add object\n");
+				return Status::Failure;
+			}
+			std::pair<std::string, std::shared_ptr<Object>> newElement = { name, std::make_shared<Object>(name, std::move(ds), owner) };
+			return Status::Success;
+		}
+		printf("Object already exists!\n");
+		return Status::Failure;
+	}
+	Status Manager::AddDataset(std::string name, std::string conflictInterestName)
+	{
+		if (m_datasets.at(name) != nullptr) {
+			auto ci = m_conflictsInterests.at(conflictInterestName);
+			if (ci == nullptr)
+			{
+				printf("can't find ci- failed to add dataset\n");
+				return Status::Failure;
+			}
+			std::pair<std::string, std::shared_ptr<Dataset>> newElement = { name, std::make_shared<Dataset>(name, std::move(ci)) };
+			return Status::Success;
+		}
+		printf("Dataset already exists!\n");
+		return Status::Failure;
+	}
+	Status Manager::AddConflictInterest(std::string name)
+	{
+		if (m_conflictsInterests.at(name) != nullptr) {
+			std::pair<std::string, std::shared_ptr<ConflictInterest>> newElement = { name, std::make_shared<ConflictInterest>(name) };
+			return Status::Success;
+		}
+		printf("ConflictInterest already exists!\n");
+		return Status::Failure;
+	}
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

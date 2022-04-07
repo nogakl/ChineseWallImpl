@@ -1,10 +1,5 @@
 #pragma once
-#include <memory>
-#include <map>
-#include <list>
-#include <string>
-#include "Status.h"
-#include "Permissions.h"
+#include "Common.h"
 
 namespace ChineseWall {
 	class Subject;
@@ -14,6 +9,6 @@ namespace ChineseWall {
 		Status WriteAccess(const Subject& subject);
 	private:
 		std::string m_name;
-		std::map<Subject, std::unique_ptr<std::list<Permission>>> m_accessList;
+		AccessList m_accessList;
 	};
 }
