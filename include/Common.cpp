@@ -20,14 +20,19 @@ namespace ChineseWall {
 	{
 		/* if subject is not in access list- we should create new permission list */
 		auto permissionListPtr = m_accessList.find(subject);
-		if (permissionListPtr == m_accessList.end()) 
-			m_accessList.at(subject).push_back(permission);
+		if (permissionListPtr == m_accessList.end()) {
+			std::list<Permission> l;
+			l.push_back(permission);
+			m_accessList.insert(std::pair<std::string, std::list<Permission>>(subject, l));
+		}
 		else {
 			/* otherwise, we should insert the permission to its list, if not exists */
 			auto permissionList = permissionListPtr->second;
 			std::list<Permission>::iterator it = std::find(permissionList.begin(), permissionList.end(), permission);
-			if (it == permissionList.end())
+			if (it == permissionList.end()) {
 				permissionList.push_back(permission);
+				m_accessList.at(subject) = permissionList;
+			}
 		}
 		return Status::Success;
 	}
@@ -47,6 +52,7 @@ namespace ChineseWall {
 			return Status::Failure;
 		}
 		permissionList.remove(permission);
+		m_accessList.at(subject) = permissionList;
 		return Status::Success;
 	}
 	Status AccessList::RemoveSubject(std::string subject)

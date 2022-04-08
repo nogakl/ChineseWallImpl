@@ -10,6 +10,8 @@ namespace ChineseWall {
 		Dataset(std::string name, ConflictInterest &conflictInterest);
 		Status ReadAccess(Subject& subject);
 		Status WriteAccess(Subject& subject);
+		Status AddPermission(Subject& subject, Permission permission);
+		Status RemovePermission(Subject& subject, Permission permission);
 	private:
 		std::string m_name;
 		ConflictInterest &m_conflictInterest;

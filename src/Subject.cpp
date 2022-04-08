@@ -1,6 +1,6 @@
-﻿#include "..\include\Manager.h"
+﻿#include "..\include\Dataset.h"
+#include "..\include\Manager.h"
 #include "..\include\Subject.h"
-
 
 namespace ChineseWall {
     Subject::Subject(std::string name) :

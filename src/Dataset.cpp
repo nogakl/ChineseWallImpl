@@ -21,4 +21,14 @@ namespace ChineseWall {
 	{
 		return Status();
 	}
+
+	Status Dataset::AddPermission(Subject& subject, Permission permission)
+	{
+		return m_accessList.AddPermission(subject.GetName(), permission);
+	}
+
+	Status Dataset::RemovePermission(Subject& subject, Permission permission)
+	{
+		return m_accessList.RemovePermission(subject.GetName(), permission);
+	}
 }

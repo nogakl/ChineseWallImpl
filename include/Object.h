@@ -9,11 +9,13 @@ namespace ChineseWall {
 		explicit Object(std::string name, Dataset &dataset, Subject &owner);
 		~Object() = default;
 
-		Status read(Subject& subject, uint8_t* buffer, const size_t size);
-		Status write(Subject& subject, const uint8_t* buffer, const size_t size);
+		Status Read(Subject& subject, uint8_t* buffer, const size_t size);
+		Status Write(Subject& subject, const uint8_t* buffer, const size_t size);
+		Status AddPermission(Subject& subject, Permission permission);
+		Status RemovePermission(Subject& subject, Permission permission);
 	private:
 		Dataset &m_dataset;
-		AccessList m_accsessList;
+		AccessList m_accessList;
 		std::string m_name;
 	};
 }

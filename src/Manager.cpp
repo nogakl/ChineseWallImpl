@@ -8,8 +8,9 @@ namespace ChineseWall {
 
 	Status Manager::AddSubject(std::string name)
 	{
-		if (m_subjects.at(name) != nullptr) {
-			std::pair<std::string, std::unique_ptr<Subject>> newElement = { name, std::make_unique<Subject>(name) };
+		auto it = m_subjects.find(name);
+		if (it == m_subjects.end()) {
+			m_subjects.insert(std::pair<std::string, std::unique_ptr<Subject>>(name, std::make_unique<Subject>(name)));
 			return Status::Success;
 		}
 		printf("Subject already exists!\n");
@@ -17,14 +18,15 @@ namespace ChineseWall {
 	}
 	Status Manager::AddObject(std::string name, std::string datasetName, Subject& owner)
 	{
-		if (m_objects.at(name) != nullptr) {
-			if (m_datasets.at(datasetName) == nullptr)
-			{
+		auto itObj = m_objects.find(name);
+		if (itObj == m_objects.end()) {
+			auto itDs = m_datasets.find(datasetName);
+			if (itDs == m_datasets.end()) {
 				printf("can't find ds- failed to add object\n");
 				return Status::Failure;
 			}
 			Dataset* ds = m_datasets.at(datasetName).get();
-			std::pair<std::string, std::unique_ptr<Object>> newElement = { name, std::make_unique<Object>(name, *ds, owner) };
+			m_objects.insert(std::pair<std::string, std::unique_ptr<Object>>(name, std::make_unique<Object>(name, *ds, owner)));
 			return Status::Success;
 		}
 		printf("Object already exists!\n");
@@ -32,14 +34,16 @@ namespace ChineseWall {
 	}
 	Status Manager::AddDataset(std::string name, std::string conflictInterestName)
 	{
-		if (m_datasets.at(name) != nullptr) {
-			if(m_conflictsInterests.at(conflictInterestName) == nullptr)
+		auto itDs = m_datasets.find(name);
+		if (itDs == m_datasets.end()) {
+			auto itCi = m_conflictsInterests.find(conflictInterestName);
+			if(itCi == m_conflictsInterests.end())
 			{
 				printf("can't find ci- failed to add dataset\n");
 				return Status::Failure;
 			}
 			ConflictInterest* ci = m_conflictsInterests.at(conflictInterestName).get();
-			std::pair<std::string, std::unique_ptr<Dataset>> newElement = { name, std::make_unique<Dataset>(name, *ci) };
+			m_datasets.insert(std::pair<std::string, std::unique_ptr<Dataset>>(name, std::make_unique<Dataset>(name, *ci)));
 			return Status::Success;
 		}
 		printf("Dataset already exists!\n");
@@ -47,8 +51,9 @@ namespace ChineseWall {
 	}
 	Status Manager::AddConflictInterest(std::string name)
 	{
-		if (m_conflictsInterests.at(name) != nullptr) {
-			std::pair<std::string, std::unique_ptr<ConflictInterest>> newElement = { name, std::make_unique<ConflictInterest>(name) };
+		auto itCi = m_conflictsInterests.find(name);
+		if (itCi == m_conflictsInterests.end()){
+			m_conflictsInterests.insert(std::pair<std::string, std::unique_ptr<ConflictInterest>>(name, std::make_unique<ConflictInterest>(name)));
 			return Status::Success;
 		}
 		printf("ConflictInterest already exists!\n");

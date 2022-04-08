@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31605.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChineseWall", "ChineseWall.vcxproj", "{60E395CB-1963-4039-A085-8D417C893ADA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChineseWallUT", "ChineseWallUT\ChineseWallUT.vcxproj", "{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{60E395CB-1963-4039-A085-8D417C893ADA}.Release|x64.Build.0 = Release|x64
 		{60E395CB-1963-4039-A085-8D417C893ADA}.Release|x86.ActiveCfg = Release|Win32
 		{60E395CB-1963-4039-A085-8D417C893ADA}.Release|x86.Build.0 = Release|Win32
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Debug|x64.ActiveCfg = Debug|x64
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Debug|x64.Build.0 = Debug|x64
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Debug|x86.ActiveCfg = Debug|Win32
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Debug|x86.Build.0 = Debug|Win32
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Release|x64.ActiveCfg = Release|x64
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Release|x64.Build.0 = Release|x64
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Release|x86.ActiveCfg = Release|Win32
+		{B7B6C808-D0D4-4B9A-8856-BBCB7811C937}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
