@@ -10,11 +10,11 @@ namespace ChineseWall {
 	{}
 	Status Dataset::ReadAccess(Subject& subject)
 	{
-
-		return m_accessList.GetAccess(subject.GetName(), Permission::Read) == Status::Success || 
-			m_conflictInterest.ReadAccess(subject) == Status::PermissionDenied ?
-			Status::Success : 
-			Status::PermissionDenied;
+		if (m_conflictInterest.ReadAccess(subject) == Status::PermissionDenied) {
+			m_accessList.AddPermission(subject.GetName(), Permission::Read);
+			return Status::Success;
+		}
+		return m_accessList.GetPermission(subject.GetName(), Permission::Read);
 	}
 
 	Status Dataset::WriteAccess(Subject& subject)

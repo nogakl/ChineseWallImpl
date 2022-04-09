@@ -14,9 +14,9 @@ const std::string t_subjectName1 = "subject1";
 
 /* Tests */
 TEST(AccessLitstUT, AccListGeneral) {
-	EXPECT_EQ(t_accList.GetAccess(t_subjectName1, Permission::Read), Status::PermissionDenied);
+	EXPECT_EQ(t_accList.GetPermission(t_subjectName1, Permission::Read), Status::PermissionDenied);
 	EXPECT_EQ(t_accList.AddPermission(t_subjectName1, Permission::Read), Status::Success);
-	EXPECT_EQ(t_accList.GetAccess(t_subjectName1, Permission::Read), Status::Success);
+	EXPECT_EQ(t_accList.GetPermission(t_subjectName1, Permission::Read), Status::Success);
 	EXPECT_EQ(t_accList.RemovePermission(t_subjectName1, Permission::Read), Status::Success);
 	EXPECT_EQ(t_accList.RemovePermission(t_subjectName1, Permission::Read), Status::Failure);
 	EXPECT_EQ(t_accList.RemoveSubject(t_subjectName1), Status::Success);

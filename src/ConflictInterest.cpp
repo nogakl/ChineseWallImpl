@@ -7,7 +7,7 @@ namespace ChineseWall {
 
     Status ChineseWall::ConflictInterest::ReadAccess(Subject& subject)
     {
-		return m_accessList.GetAccess(subject.GetName(), Permission::Read);
+		return m_accessList.GetPermission(subject.GetName(), Permission::Read);
     }
 
     Status ConflictInterest::AddPermission(Subject& subject, Permission permission)

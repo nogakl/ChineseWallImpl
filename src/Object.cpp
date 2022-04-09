@@ -12,10 +12,11 @@ namespace ChineseWall {
 
 	Status Object::Read(Subject& subject, uint8_t* buffer, const size_t size)
 	{
-		return m_accessList.GetAccess(subject.GetName(), Permission::Read) == Status::Success ||
-			m_dataset.ReadAccess(subject) == Status::Success ?
-			Status::Success :
-			Status::PermissionDenied;
+		if (m_dataset.ReadAccess(subject) == Status::Success) {
+			m_accessList.AddPermission(subject.GetName(), Permission::Read);
+			return Status::Success;
+		}
+		return m_accessList.GetPermission(subject.GetName(), Permission::Read);
 	}
 
 	Status Object::Write(Subject& subject, const uint8_t* buffer, const size_t size)

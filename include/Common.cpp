@@ -1,7 +1,7 @@
 #include "Subject.h"
 #include "Common.h"
 namespace ChineseWall {
-	Status AccessList::GetAccess(std::string subject, Permission permission)
+	Status AccessList::GetPermission(std::string subject, Permission permission)
 	{
 		/* varify that subject is in access list */
 		auto permissionListPtr = m_accessList.find(subject);

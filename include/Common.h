@@ -25,7 +25,7 @@ namespace ChineseWall {
 	private:
 		std::map<std::string, std::list<Permission>> m_accessList;
 	public:
-		Status GetAccess(std::string subject, Permission permission);
+		Status GetPermission(std::string subject, Permission permission);
 		Status AddPermission(std::string subject, Permission permission);
 		Status RemovePermission(std::string subject, Permission permission);
 		Status RemoveSubject(std::string subject);
