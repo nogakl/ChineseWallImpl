@@ -16,8 +16,17 @@ namespace ChineseWall {
 		printf("Subject already exists!\n");
 		return Status::Failure;
 	}
-	Status Manager::AddObject(std::string name, std::string datasetName, Subject& owner)
+
+	Status Manager::AddObject(std::string name, std::string datasetName, std::string ownerName)
 	{
+		auto itSub = m_subjects.find(ownerName);
+		if (itSub == m_subjects.end()) {
+			printf("can't find owner name. Failed to add Object!\n");
+			return Status::Failure;
+		}
+
+		Subject& owner = *itSub->second.get();
+
 		auto itObj = m_objects.find(name);
 		if (itObj == m_objects.end()) {
 			auto itDs = m_datasets.find(datasetName);

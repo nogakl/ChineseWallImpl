@@ -24,6 +24,7 @@ TEST(SubjectUT, GetName) {
 
 TEST(SubjectUT, Add) {
 	Subject s(t_subjectName1);
+	EXPECT_EQ(s.AddSubject(t_subjectName1), Status::Success);
 	EXPECT_EQ(s.AddSubject(t_subjectName2), Status::Success);
 	EXPECT_EQ(s.AddSubject(t_subjectName2), Status::Failure);
 	EXPECT_EQ(s.AddConflictInterest(t_ciName), Status::Success);

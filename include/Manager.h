@@ -11,7 +11,7 @@ namespace ChineseWall {
 			return instance;
 		}
 		Status AddSubject(std::string name);
-		Status AddObject(std::string name, std::string datasetName, Subject &owner);
+		Status AddObject(std::string name, std::string datasetName, std::string ownerName);
 		Status AddDataset(std::string name, std::string conflictInterestName);
 		Status AddConflictInterest(std::string name);
 
