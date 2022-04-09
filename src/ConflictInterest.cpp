@@ -1,5 +1,8 @@
 ﻿#include "../include/Subject.h"
 #include "..\include\ConflictInterest.h"
+#include "../include/Dataset.h"
+#include "../include/Object.h"
+#include "..\include\Manager.h"
 
 namespace ChineseWall {
     ConflictInterest::ConflictInterest(std::string name) : 
@@ -22,6 +25,10 @@ namespace ChineseWall {
 
     Status ChineseWall::ConflictInterest::WriteAccess(Subject& subject)
     {
-        return Status();
+        return Manager::Instance().IsPermissionExclusive(subject, Permission::Write, m_name);
+    }
+    std::string ConflictInterest::GetName()
+    {
+        return m_name;
     }
 }

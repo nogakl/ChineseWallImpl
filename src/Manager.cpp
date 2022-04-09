@@ -68,4 +68,13 @@ namespace ChineseWall {
 		printf("ConflictInterest already exists!\n");
 		return Status::Failure;
 	}
+	Status Manager::IsPermissionExclusive(Subject& subject, Permission permission, std::string ciName)
+	{
+		for (const auto& ci : m_conflictsInterests) {
+			auto name = ci.second->GetName();
+			if (name != ciName && ci.second->ReadAccess(subject) == Status::Success || name == ciName && ci.second->ReadAccess(subject) != Status::Success)
+				return Status::Failure;
+		}
+		return Status::Success;
+	}
 }

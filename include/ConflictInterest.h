@@ -10,6 +10,7 @@ namespace ChineseWall {
 		Status AddPermission(Subject& subject, Permission permission);
 		Status RemovePermission(Subject& subject, Permission permission);
 		Status WriteAccess(Subject& subject);
+		std::string GetName();
 	private:
 		std::string m_name;
 		AccessList m_accessList;
