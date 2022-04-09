@@ -12,10 +12,8 @@ namespace ChineseWall {
 
 	Status Object::Read(Subject& subject, uint8_t* buffer, const size_t size)
 	{
-		if (m_dataset.ReadAccess(subject) == Status::Success) {
-			m_accessList.AddPermission(subject.GetName(), Permission::Read);
-			return Status::Success;
-		}
+		if (m_dataset.ReadAccess(subject) == Status::Success) 
+			return AddPermission(subject, Permission::Read);
 		return m_accessList.GetPermission(subject.GetName(), Permission::Read);
 	}
 
@@ -26,7 +24,9 @@ namespace ChineseWall {
 
 	Status Object::AddPermission(Subject& subject, Permission permission)
 	{
-		return m_accessList.AddPermission(subject.GetName(), permission);
+		return m_dataset.AddPermission(subject, permission) == Status::Success ?
+			m_accessList.AddPermission(subject.GetName(), permission) :
+			Status::Failure;
 	}
 
 	Status Object::RemovePermission(Subject& subject, Permission permission)
