@@ -11,7 +11,8 @@ namespace ChineseWall {
 		Success = 0,
 		Failure,
 		BadAllocation,
-		PermissionDenied
+		PermissionDenied,
+		AlreadyExists
 	};
 	enum Permission : uint8_t {
 		Read = 0,

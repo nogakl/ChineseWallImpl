@@ -26,13 +26,15 @@ TEST(SubjectUT, Add) {
 	Subject s(t_subjectName1);
 	EXPECT_EQ(s.AddSubject(t_subjectName1), Status::Success);
 	EXPECT_EQ(s.AddSubject(t_subjectName2), Status::Success);
-	EXPECT_EQ(s.AddSubject(t_subjectName2), Status::Failure);
+	EXPECT_EQ(s.AddSubject(t_subjectName2), Status::AlreadyExists);
 	EXPECT_EQ(s.AddConflictInterest(t_ciName), Status::Success);
-	EXPECT_EQ(s.AddConflictInterest(t_ciName), Status::Failure);
-	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName), Status::Success);
-	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName), Status::Failure);
+	EXPECT_EQ(s.AddConflictInterest(t_ciName), Status::AlreadyExists);
 	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName2), Status::Failure);
-	EXPECT_EQ(s.AddObject(t_objectName, t_dsName), Status::Success);
-	EXPECT_EQ(s.AddObject(t_objectName, t_dsName), Status::Failure);
+	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName), Status::Success);
+	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName), Status::AlreadyExists);
+	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName2), Status::AlreadyExists);
 	EXPECT_EQ(s.AddObject(t_objectName, t_dsName2), Status::Failure);
+	EXPECT_EQ(s.AddObject(t_objectName, t_dsName), Status::Success);
+	EXPECT_EQ(s.AddObject(t_objectName, t_dsName), Status::AlreadyExists);
+	EXPECT_EQ(s.AddObject(t_objectName, t_dsName2), Status::AlreadyExists);
 }

@@ -14,7 +14,15 @@ namespace ChineseWall {
 		Status AddObject(std::string name, std::string datasetName, std::string ownerName);
 		Status AddDataset(std::string name, std::string conflictInterestName);
 		Status AddConflictInterest(std::string name);
-		Status IsPermissionExclusive(Subject &subject, Permission permission, std::string ciName);
+		Status RemoveSubject(std::string name);
+		Status RemoveObject(std::string name);
+		Status RemoveDataset(std::string name);
+		Status RemoveConflictInterest(std::string name);
+		Status IsPermissionExclusive(Subject& subject, Permission permission, std::string ciName);
+		Subject* GetSubject(std::string name);
+		Object* GetObject(std::string name);
+		Dataset* GetDataset(std::string name);
+		ConflictInterest* GetConflictInterest(std::string name);
 
 	private:
 		explicit Manager() {}

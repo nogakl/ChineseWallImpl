@@ -25,4 +25,5 @@ TEST(DsUT, DsGeneral) {
 	EXPECT_EQ(t_ds.ReadAccess(t_s), Status::Success);
 	EXPECT_EQ(t_ci.AddPermission(t_s, Permission::Read), Status::Success);
 	EXPECT_EQ(t_ds.ReadAccess(t_s), Status::Success);
+	EXPECT_EQ(t_ds.WriteAccess(t_s), Status::Success);
 }
