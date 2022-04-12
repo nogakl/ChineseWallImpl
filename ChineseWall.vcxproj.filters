@@ -16,6 +16,9 @@
     <Filter Include="3rd_party">
       <UniqueIdentifier>{2dc5d251-7cee-4e4f-a415-e4e624446622}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DB">
+      <UniqueIdentifier>{b1e9ad5a-bd3c-43ec-b322-7cd4125e511a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ConflictInterest.cpp">
@@ -87,6 +90,12 @@
   <ItemGroup>
     <None Include="jsoncpp\src\lib_json\json_valueiterator.inl">
       <Filter>3rd_party</Filter>
+    </None>
+    <None Include="example1.json">
+      <Filter>DB</Filter>
+    </None>
+    <None Include="‏‏example2.json">
+      <Filter>DB</Filter>
     </None>
   </ItemGroup>
 </Project>

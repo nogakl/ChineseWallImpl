@@ -164,7 +164,9 @@
     <ClInclude Include="Object.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="example1.json" />
     <None Include="jsoncpp\src\lib_json\json_valueiterator.inl" />
+    <None Include="‏‏example2.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
