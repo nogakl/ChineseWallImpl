@@ -2,19 +2,19 @@
   "obj1": {
     "name": "object1",
     "dataset": "DS1",
-    "conflictInterest" :  "CI1",
+    "conflictInterest": "CI1",
     "owner": "subject1",
     "read": [ "subject1", "subject2" ],
-    "write": [],
+    "write": [ "subject2" ],
     "execute": []
   },
   "obj2": {
     "name": "object2",
     "dataset": "DS2",
-    "conflictInterest": "CI1",    
+    "conflictInterest": "CI1",
     "owner": "subject1",
-    "read": [ "subject1" ],
-    "write": [ "subject2" ],
+    "read": [ "subject2" ],
+    "write": [ ],
     "execute": [ "subject2" ]
   },
   "obj3": {
@@ -23,7 +23,25 @@
     "conflictInterest": "CI1",
     "owner": "subject2",
     "read": [ "subject1" ],
-    "write": [ "subject1" ],
+    "write": [ ],
+    "execute": [ "subject1" ]
+  },
+  "obj4": {
+    "name": "object4",
+    "dataset": "DS3",
+    "conflictInterest": "CI2",
+    "owner": "subject2",
+    "read": [ "subject1" ],
+    "write": [  ],
+    "execute": [ "subject1" ]
+  },
+  "obj5": {
+    "name": "object5",
+    "dataset": "DS3",
+    "conflictInterest": "CI2",
+    "owner": "subject1",
+    "read": [ "subject1" ],
+    "write": [ ],
     "execute": [ "subject1" ]
   }
 }

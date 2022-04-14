@@ -24,7 +24,10 @@ int main()
 	std::cin >> db;
 
 	ifs.open("example" + std::to_string(db) + ".json");
-	
+	if (ifs.is_open() == false) {
+		std::cout << "Failed to Open\n";
+	}
+
 	std::cout << "Building the system ....... \n";
 
 	Json::CharReaderBuilder builder;
@@ -46,7 +49,7 @@ int main()
 
 	int i = 1;
 	std::string fullName = basicName + std::to_string(i);
-	while(root[fullName]["name"].isNull() != true) {
+	while (root[fullName]["name"].isNull() != true) {
 		objName = root[fullName]["name"].asString();
 		datasetName = root[fullName]["dataset"].asString();
 		ciName = root[fullName]["conflictInterest"].asString();
@@ -94,6 +97,8 @@ int main()
 		std::cout << "Please enter your subject name\n";
 		std::cin >> userSubjectName;
 		auto userSubject = Manager::Instance().GetSubject(userSubjectName);
+		std::string userObjectName, dataset;
+		Object* userObject;
 		if (userSubject == nullptr)
 		{
 			std::cout << "Wrong subject name!\nTo try again enter 0, to exit 1\n";
@@ -101,30 +106,54 @@ int main()
 			break;
 		}
 		else {
-			std::string cmd; std::string userObjectName;
-			std::cout << "Enter command\n";
+			std::cout << "Please enter commad:\n1 - Read\n2 - Write\n3 - Add Subject\n4 - Add Object\n";
+			int cmd = 0;
 			std::cin >> cmd;
-			std::cout << "Enter object name\n";
-			std::cin >> userObjectName;
-			auto userObject = Manager::Instance().GetObject(userObjectName);
-			if (userObject == nullptr)
+			switch (cmd)
 			{
-				std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
-				std::cin >> toExit;
-			}
-			else {
-				if (cmd.compare("read") == 0) {
-					std::cout << "Got read!\n";
-					std::cout << "Access " << (userObject->Read(*userSubject) == Status::Success ? "Success" : "Denied") << std::endl;
+			case 1:
+				std::cout << "Please enter object name\n";
+				std::cin >> userObjectName;
+
+				userObject = Manager::Instance().GetObject(userObjectName);
+				if (userObject == nullptr)
+				{
+					std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
+					std::cin >> toExit;
 				}
-				else if (cmd.compare("write") == 0) {
-					std::cout << "Got wrtie!\n";
-					std::cout << "Access " << (userObject->Write(*userSubject) == Status::Success ? "Success" : "Denied") << std::endl;
+				std::cout << "Access " << (userObject->Read(*userSubject) == Status::Success ? "Success" : "Denied") << std::endl;
+				break;
+			case 2:
+				std::cout << "Please enter object name\n";
+				std::cin >> userObjectName;
+
+				userObject = Manager::Instance().GetObject(userObjectName);
+				if (userObject == nullptr)
+				{
+					std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
+					std::cin >> toExit;
 				}
+				std::cout << "Access " << (userObject->Write(*userSubject) == Status::Success ? "Success" : "Denied") << std::endl;
+				break;
+			case 3:
+				std::cout << "Please enter subject name\n";
+				std::cin >> userObjectName;
+				std::cout << ((Manager::Instance().AddSubject(userObjectName) == Status::Success) ? "Success" : "Failed") << "to add subject\n";
+				break;
+			case 4:
+				std::cout << "Please enter object name\n";
+				std::cin >> userObjectName;
+				std::cout << "Please enter dataset name\n";
+				std::cin >> dataset;
+				std::cout << ((Manager::Instance().AddObject(userObjectName,dataset, userSubjectName) == Status::Success) ? "Success" : "Failed") << "to add object\n";
+				break;
+			default:
+				std::cout << "OOPS! wrong command :\\";
 			}
 		}
+
 		std::cout << "to exit enter 1, to contain 0\n";
 		std::cin >> toExit;
 	}
-}	
+}
 
