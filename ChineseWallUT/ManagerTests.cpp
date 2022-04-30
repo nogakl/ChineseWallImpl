@@ -28,6 +28,7 @@ Object* objPtr3 = nullptr;
 Object* objPtr4 = nullptr;
 Object* objPtr5 = nullptr;
 Object* objPtr6 = nullptr;
+uint8_t dataIn[10];
 
 /* Test Handlers */
 
@@ -63,18 +64,18 @@ TEST(DsUT, ManagerGeneral) {
 	objPtr5 = Manager::Instance().GetObject(t_objName5);
 	objPtr6 = Manager::Instance().GetObject(t_objName6);
 
-	EXPECT_EQ(objPtr->Read(*subPtr), Status::Success);
-	EXPECT_EQ(objPtr->Write(*subPtr), Status::Success);
-	EXPECT_EQ(objPtr2->Read(*subPtr), Status::Success);
-	EXPECT_EQ(objPtr2->Write(*subPtr), Status::Success);
-	EXPECT_EQ(objPtr3->Read(*subPtr), Status::PermissionDenied);
-	EXPECT_EQ(objPtr3->Write(*subPtr), Status::PermissionDenied);
-	EXPECT_EQ(objPtr5->Read(*subPtr), Status::Success);
-	EXPECT_EQ(objPtr5->Write(*subPtr), Status::PermissionDenied);
-	EXPECT_EQ(objPtr6->Read(*subPtr), Status::Success);
-	EXPECT_EQ(objPtr6->Write(*subPtr), Status::PermissionDenied);
-	EXPECT_EQ(objPtr4->Read(*subPtr), Status::PermissionDenied);
-	EXPECT_EQ(objPtr4->Write(*subPtr), Status::PermissionDenied);
+	EXPECT_EQ(objPtr->Read(*subPtr, 0, dataIn, 0), Status::Success);
+	EXPECT_EQ(objPtr->Write(*subPtr, 0, dataIn, 0), Status::Success);
+	EXPECT_EQ(objPtr2->Read(*subPtr,0, dataIn,0), Status::Success);
+	EXPECT_EQ(objPtr2->Write(*subPtr, 0, dataIn, 0), Status::Success);
+	EXPECT_EQ(objPtr3->Read(*subPtr, 0, dataIn, 0), Status::PermissionDenied);
+	EXPECT_EQ(objPtr3->Write(*subPtr, 0, dataIn, 0), Status::PermissionDenied);
+	EXPECT_EQ(objPtr5->Read(*subPtr, 0, dataIn, 0), Status::Success);
+	EXPECT_EQ(objPtr5->Write(*subPtr, 0, dataIn, 0), Status::PermissionDenied);
+	EXPECT_EQ(objPtr6->Read(*subPtr, 0, dataIn, 0), Status::Success);
+	EXPECT_EQ(objPtr6->Write(*subPtr, 0, dataIn, 0), Status::PermissionDenied);
+	EXPECT_EQ(objPtr4->Read(*subPtr, 0, dataIn, 0), Status::PermissionDenied);
+	EXPECT_EQ(objPtr4->Write(*subPtr, 0, dataIn, 0), Status::PermissionDenied);
 
 	EXPECT_EQ(Manager::Instance().RemoveObject(t_objName), Status::Success);
 	EXPECT_EQ(Manager::Instance().RemoveObject(t_objName2), Status::Success);
