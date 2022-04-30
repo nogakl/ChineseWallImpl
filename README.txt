@@ -25,11 +25,8 @@
  An Implemetation For Chinese Wall Model
 
 # Running command:
-	Open the command line from the project directory, enter "Release\ChineseWall" (same for Debug)
-
-# Running UT command:
-	Open the command line from the project directory, enter "ChineseWallUT\Debug\ChineseWallUT"
-
+	option 1 : Open VS and Set "ChineseWall" As Stratup Project and than use local Windows Debugger
+	option 2 : Open the command line from the project directory, enter "Release\ChineseWall" (same for Debug)
 
 # Simulation Database:
 	you can build the whole system based on json file, you can find them in the project directory.
