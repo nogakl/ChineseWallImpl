@@ -1,7 +1,8 @@
 {
   "obj1": {
     "name": "object1",
-    "dataset": "DS1",
+    "type": "File",
+    "dataset": "DS123",
     "conflictInterest": "CI1",
     "owner": "subject1",
     "read": [],
@@ -10,6 +11,7 @@
   },
   "obj2": {
     "name": "object2",
+    "type": "File",
     "dataset": "DS2",
     "conflictInterest": "CI1",
     "owner": "subject1",
@@ -19,11 +21,12 @@
   },
   "obj3": {
     "name": "object3",
+    "type": "File",
     "dataset": "DS1",
     "conflictInterest": "CI1",
     "owner": "subject2",
     "read": [],
-    "write": [ ],
+    "write": [],
     "execute": []
   }
 }

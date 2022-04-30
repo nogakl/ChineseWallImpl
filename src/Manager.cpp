@@ -2,6 +2,8 @@
 #include "../include/Dataset.h"
 #include "../include/ConflictInterest.h"
 #include "../include/Object.h"
+#include "../include/File.h"
+#include "../include/Thread.h"
 #include "..\include\Manager.h"
 
 namespace ChineseWall {
@@ -17,7 +19,7 @@ namespace ChineseWall {
 		return Status::AlreadyExists;
 	}
 
-	Status Manager::AddObject(std::string name, std::string datasetName, std::string ownerName)
+	Status Manager::AddObject(std::string name, std::string type, std::string datasetName, std::string ownerName)
 	{
 		auto itSub = m_subjects.find(ownerName);
 		if (itSub == m_subjects.end()) {
@@ -34,8 +36,14 @@ namespace ChineseWall {
 				printf("can't find ds- failed to add object\n");
 				return Status::Failure;
 			}
+			
 			Dataset* ds = m_datasets.at(datasetName).get();
-			m_objects.insert(std::pair<std::string, std::unique_ptr<Object>>(name, std::make_unique<Object>(name, *ds, owner)));
+			if (type.compare(FILE_TYPE) == 0)
+				m_objects.insert(std::pair<std::string, std::unique_ptr<File>> (name, std::make_unique<File>(name, *ds, owner)));
+			else if (type.compare(THREAD_TYPE) == 0)
+				m_objects.insert(std::pair<std::string, std::unique_ptr<Thread>>(name, std::make_unique<Thread>(name, *ds, owner)));
+			else
+				m_objects.insert(std::pair<std::string, std::unique_ptr<Object>>(name, std::make_unique<Object>(name, *ds, owner)));
 			return Status::Success;
 		}
 		printf("Object already exists!\n");

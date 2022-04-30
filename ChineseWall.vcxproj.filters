@@ -27,9 +27,6 @@
     <ClCompile Include="src\Dataset.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Directory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\File.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,15 +54,12 @@
     <ClCompile Include="jsoncpp\src\lib_json\json_writer.cpp">
       <Filter>3rd_party</Filter>
     </ClCompile>
+    <ClCompile Include="src\Thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="include\Dataset.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="include\Directory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\File.h">
@@ -86,16 +80,28 @@
     <ClInclude Include="jsoncpp\src\lib_json\json_tool.h">
       <Filter>3rd_party</Filter>
     </ClInclude>
+    <ClInclude Include="include\Thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="jsoncpp\src\lib_json\json_valueiterator.inl">
       <Filter>3rd_party</Filter>
     </None>
+    <None Include="example2.json">
+      <Filter>DB</Filter>
+    </None>
+    <None Include="‏‏example3.json">
+      <Filter>DB</Filter>
+    </None>
     <None Include="example1.json">
       <Filter>DB</Filter>
     </None>
-    <None Include="‏‏example2.json">
-      <Filter>DB</Filter>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt.txt" />
   </ItemGroup>
 </Project>

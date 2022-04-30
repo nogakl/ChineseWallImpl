@@ -1,6 +1,7 @@
 {
   "obj1": {
     "name": "object1",
+    "type": "File",
     "dataset": "DS1",
     "conflictInterest": "CI1",
     "owner": "subject1",
@@ -10,38 +11,42 @@
   },
   "obj2": {
     "name": "object2",
+    "type": "File",
     "dataset": "DS2",
     "conflictInterest": "CI1",
     "owner": "subject1",
     "read": [ "subject2" ],
-    "write": [ ],
+    "write": [],
     "execute": [ "subject2" ]
   },
   "obj3": {
     "name": "object3",
+    "type": "File",
     "dataset": "DS1",
     "conflictInterest": "CI1",
     "owner": "subject2",
     "read": [ "subject1" ],
-    "write": [ ],
+    "write": [],
     "execute": [ "subject1" ]
   },
   "obj4": {
     "name": "object4",
+    "type": "File",
     "dataset": "DS3",
     "conflictInterest": "CI2",
     "owner": "subject2",
     "read": [ "subject1" ],
-    "write": [  ],
+    "write": [],
     "execute": [ "subject1" ]
   },
   "obj5": {
     "name": "object5",
+    "type": "File",
     "dataset": "DS3",
     "conflictInterest": "CI2",
     "owner": "subject1",
     "read": [ "subject1" ],
-    "write": [ ],
+    "write": [],
     "execute": [ "subject1" ]
   }
 }

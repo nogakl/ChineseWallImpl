@@ -10,14 +10,14 @@ namespace ChineseWall {
 		m_accessList.AddPermission(owner.GetName(), Permission::Owner);
 	}
 
-	Status Object::Read(Subject& subject, uint8_t* buffer, const size_t size)
+	Status Object::Read(Subject& subject, uint8_t position, uint8_t* buffer, const size_t size)
 	{
 		return m_accessList.GetPermission(subject.GetName(), Permission::Read) != Status::Success ?
 			m_dataset.ReadAccess(subject) == Status::Success ? AddPermission(subject, Permission::Read) : Status::PermissionDenied :
 			Status::Success;
 	}
 
-	Status Object::Write(Subject& subject, const uint8_t* buffer, const size_t size)
+	Status Object::Write(Subject& subject, uint8_t position, const uint8_t* buffer, const size_t size)
 	{
 		return m_accessList.GetPermission(subject.GetName(), Permission::Write) != Status::Success ?
 			Read(subject) == Status::Success && m_dataset.WriteAccess(subject) == Status::Success ? AddPermission(subject, Permission::Write) : Status::PermissionDenied :

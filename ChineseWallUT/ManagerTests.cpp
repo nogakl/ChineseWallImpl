@@ -36,25 +36,25 @@ TEST(DsUT, ManagerGeneral) {
 	EXPECT_EQ(Manager::Instance().AddSubject(t_subjectName), Status::Success);
 	EXPECT_EQ(Manager::Instance().AddSubject(t_subjectName), Status::AlreadyExists);
 	EXPECT_EQ(Manager::Instance().AddDataset(t_dsName, t_ciName), Status::Failure);
-	EXPECT_EQ(Manager::Instance().AddObject(t_objName, t_dsName, t_subjectName), Status::Failure);
+	EXPECT_EQ(Manager::Instance().AddObject(t_objName, FILE_TYPE, t_dsName, t_subjectName), Status::Failure);
 	EXPECT_EQ(Manager::Instance().AddConflictInterest(t_ciName), Status::Success);
 	EXPECT_EQ(Manager::Instance().AddConflictInterest(t_ciName), Status::AlreadyExists);
 	EXPECT_EQ(Manager::Instance().AddDataset(t_dsName, t_ciName), Status::Success);
 	EXPECT_EQ(Manager::Instance().AddDataset(t_dsName, t_ciName), Status::AlreadyExists);
-	EXPECT_EQ(Manager::Instance().AddObject(t_objName, t_dsName, t_subjectName), Status::Success);
-	EXPECT_EQ(Manager::Instance().AddObject(t_objName, t_dsName, t_subjectName), Status::AlreadyExists);
+	EXPECT_EQ(Manager::Instance().AddObject(t_objName, FILE_TYPE, t_dsName, t_subjectName), Status::Success);
+	EXPECT_EQ(Manager::Instance().AddObject(t_objName, FILE_TYPE, t_dsName, t_subjectName), Status::AlreadyExists);
 
 	subPtr = Manager::Instance().GetSubject(t_subjectName);
 	EXPECT_EQ(subPtr->AddConflictInterest(t_ciName2), Status::Success);
 	EXPECT_EQ(subPtr->AddDataset(t_dsName2, t_ciName), Status::Success);
 	EXPECT_EQ(subPtr->AddDataset(t_dsName3, t_ciName2), Status::Success);
 	EXPECT_EQ(subPtr->AddDataset(t_dsName4, t_ciName2), Status::Success);
-	EXPECT_EQ(subPtr->AddObject(t_objName, t_dsName), Status::AlreadyExists);
-	EXPECT_EQ(subPtr->AddObject(t_objName2, t_dsName), Status::Success);
-	EXPECT_EQ(subPtr->AddObject(t_objName3, t_dsName2), Status::Success);
-	EXPECT_EQ(subPtr->AddObject(t_objName4, t_dsName3), Status::Success);
-	EXPECT_EQ(subPtr->AddObject(t_objName5, t_dsName4), Status::Success);
-	EXPECT_EQ(subPtr->AddObject(t_objName6, t_dsName4), Status::Success);
+	EXPECT_EQ(subPtr->AddObject(t_objName, FILE_TYPE, t_dsName), Status::AlreadyExists);
+	EXPECT_EQ(subPtr->AddObject(t_objName2, FILE_TYPE, t_dsName), Status::Success);
+	EXPECT_EQ(subPtr->AddObject(t_objName3, FILE_TYPE, t_dsName2), Status::Success);
+	EXPECT_EQ(subPtr->AddObject(t_objName4, FILE_TYPE, t_dsName3), Status::Success);
+	EXPECT_EQ(subPtr->AddObject(t_objName5, FILE_TYPE, t_dsName4), Status::Success);
+	EXPECT_EQ(subPtr->AddObject(t_objName6, FILE_TYPE, t_dsName4), Status::Success);
 
 	objPtr = Manager::Instance().GetObject(t_objName);
 	objPtr2 = Manager::Instance().GetObject(t_objName2);

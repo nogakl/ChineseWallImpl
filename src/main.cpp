@@ -11,6 +11,8 @@
 #include "../include/ConflictInterest.h"
 #include "../include/Object.h"
 #include "../include/Manager.h"
+#include "../include/File.h"
+#include "../include/Thread.h"
 
 using namespace ChineseWall;
 
@@ -46,11 +48,13 @@ int main()
 	std::string executeName = "";
 	std::string datasetName = "";
 	std::string ciName = "";
+	std::string objType = "";
 
 	int i = 1;
 	std::string fullName = basicName + std::to_string(i);
 	while (root[fullName]["name"].isNull() != true) {
 		objName = root[fullName]["name"].asString();
+		objType = root[fullName]["type"].asString();
 		datasetName = root[fullName]["dataset"].asString();
 		ciName = root[fullName]["conflictInterest"].asString();
 		ownerName = root[fullName]["owner"].asString();
@@ -58,7 +62,7 @@ int main()
 		Manager::Instance().AddSubject(ownerName);
 		Manager::Instance().AddConflictInterest(ciName);
 		Manager::Instance().AddDataset(datasetName, ciName);
-		Manager::Instance().AddObject(objName, datasetName, ownerName);
+		Manager::Instance().AddObject(objName, objType, datasetName, ownerName);
 
 		auto obj = Manager::Instance().GetObject(objName);
 
@@ -97,8 +101,10 @@ int main()
 		std::cout << "Please enter your subject name\n";
 		std::cin >> userSubjectName;
 		auto userSubject = Manager::Instance().GetSubject(userSubjectName);
-		std::string userObjectName, dataset;
+		std::string userObjectName, dataset, objectType;
 		Object* userObject;
+		uint8_t bufferData[THREAD_MEMORY_SPACE] = { 0 };
+		int position = 0, numOfBytes = 0;
 		if (userSubject == nullptr)
 		{
 			std::cout << "Wrong subject name!\nTo try again enter 0, to exit 1\n";
@@ -121,7 +127,14 @@ int main()
 					std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
 					std::cin >> toExit;
 				}
-				std::cout << "Access " << (userObject->Read(*userSubject) == Status::Success ? "Success" : "Denied") << std::endl;
+				else {
+					std::cout << "Please enter position\n";
+					std::cin >> position;
+					std::cout << "Please enter num of bytes to read\n";
+					std::cin >> numOfBytes;
+					std::cout << "Access " << (userObject->Read(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
+					std::cout << "Read from object : " << bufferData << std::endl;
+				}
 				break;
 			case 2:
 				std::cout << "Please enter object name\n";
@@ -133,7 +146,13 @@ int main()
 					std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
 					std::cin >> toExit;
 				}
-				std::cout << "Access " << (userObject->Write(*userSubject) == Status::Success ? "Success" : "Denied") << std::endl;
+				std::cout << "Please enter position\n";
+				std::cin >> position;
+				std::cout << "Please enter num of bytes to write\n";
+				std::cin >> numOfBytes;
+				std::cout << "Please enter string to write\n";
+				std::cin >> bufferData;
+				std::cout << "Access " << (userObject->Write(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
 				break;
 			case 3:
 				std::cout << "Please enter subject name\n";
@@ -143,9 +162,11 @@ int main()
 			case 4:
 				std::cout << "Please enter object name\n";
 				std::cin >> userObjectName;
+				std::cout << "Please enter object type : File or Thread\n";
+				std::cin >> objectType;
 				std::cout << "Please enter dataset name\n";
 				std::cin >> dataset;
-				std::cout << ((Manager::Instance().AddObject(userObjectName,dataset, userSubjectName) == Status::Success) ? "Success" : "Failed") << "to add object\n";
+				std::cout << ((Manager::Instance().AddObject(userObjectName, objectType, dataset, userSubjectName) == Status::Success) ? "Success" : "Failed") << "to add object\n";
 				break;
 			default:
 				std::cout << "OOPS! wrong command :\\";

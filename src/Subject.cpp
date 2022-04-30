@@ -13,9 +13,9 @@ namespace ChineseWall {
         return Manager::Instance().AddSubject(name);
     }
 
-    Status Subject::AddObject(std::string name, std::string datasetName)
+    Status Subject::AddObject(std::string name, std::string type, std::string datasetName)
     {
-        return Manager::Instance().AddObject(name, datasetName, m_name);
+        return Manager::Instance().AddObject(name, type, datasetName, m_name);
     }
 
     Status Subject::AddDataset(std::string name, std::string ciName)

@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)\jsoncpp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,28 +146,32 @@
     <ClCompile Include="jsoncpp\src\lib_json\json_writer.cpp" />
     <ClCompile Include="src\ConflictInterest.cpp" />
     <ClCompile Include="src\Dataset.cpp" />
-    <ClCompile Include="src\Directory.cpp" />
     <ClCompile Include="src\File.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Manager.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Subject.cpp" />
+    <ClCompile Include="src\Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Common.h" />
     <ClInclude Include="include\ConflictInterest.h" />
     <ClInclude Include="include\Dataset.h" />
-    <ClInclude Include="include\Directory.h" />
     <ClInclude Include="include\File.h" />
     <ClInclude Include="include\Manager.h" />
+    <ClInclude Include="include\Object.h" />
     <ClInclude Include="include\Subject.h" />
+    <ClInclude Include="include\Thread.h" />
     <ClInclude Include="jsoncpp\src\lib_json\json_tool.h" />
-    <ClInclude Include="Object.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="example1.json" />
+    <None Include="example2.json" />
     <None Include="jsoncpp\src\lib_json\json_valueiterator.inl" />
-    <None Include="‏‏example2.json" />
+    <None Include="‏‏example3.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.txt.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

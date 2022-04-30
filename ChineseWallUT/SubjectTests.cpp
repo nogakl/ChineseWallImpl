@@ -33,8 +33,8 @@ TEST(SubjectUT, Add) {
 	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName), Status::Success);
 	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName), Status::AlreadyExists);
 	EXPECT_EQ(s.AddDataset(t_dsName, t_ciName2), Status::AlreadyExists);
-	EXPECT_EQ(s.AddObject(t_objectName, t_dsName2), Status::Failure);
-	EXPECT_EQ(s.AddObject(t_objectName, t_dsName), Status::Success);
-	EXPECT_EQ(s.AddObject(t_objectName, t_dsName), Status::AlreadyExists);
-	EXPECT_EQ(s.AddObject(t_objectName, t_dsName2), Status::AlreadyExists);
+	EXPECT_EQ(s.AddObject(t_objectName, FILE_TYPE, t_dsName2), Status::Failure);
+	EXPECT_EQ(s.AddObject(t_objectName, FILE_TYPE, t_dsName), Status::Success);
+	EXPECT_EQ(s.AddObject(t_objectName, FILE_TYPE, t_dsName), Status::AlreadyExists);
+	EXPECT_EQ(s.AddObject(t_objectName, FILE_TYPE, t_dsName2), Status::AlreadyExists);
 }

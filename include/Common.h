@@ -6,15 +6,20 @@
 #include <string>
 
 namespace ChineseWall {
+	const std::string FILE_TYPE = "File";
+	const std::string THREAD_TYPE = "Thread";
+	static constexpr int FILE_SIZE = 128;
+	static constexpr int THREAD_MEMORY_SPACE = 256;
 	class Subject;
-	enum Status : uint8_t {
+	enum class Status : uint8_t {
 		Success = 0,
 		Failure,
 		BadAllocation,
 		PermissionDenied,
-		AlreadyExists
+		AlreadyExists,
+		InvalidArguments
 	};
-	enum Permission : uint8_t {
+	enum class Permission : uint8_t {
 		Read = 0,
 		Write,
 		ReadWrite,
