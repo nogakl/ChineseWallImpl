@@ -25,22 +25,61 @@
  An Implemetation For Chinese Wall Model
 
 # Running command:
-	option 1 : Open VS and Set "ChineseWall" As Stratup Project and than use local Windows Debugger
-	option 2 : Open the command line from the project directory, enter "Release\ChineseWall" (same for Debug)
+	Open the command line from the project directory, enter "Release\ChineseWall" (same for Debug)
+
+# Running UT command:
+	Open the command line from the project directory, enter "ChineseWallUT\Debug\ChineseWallUT"
+
 
 # Simulation Database:
-	you can build the whole system based on json file, you can find them in the project directory.
+	you can build the whole system based on json file: you can find them in the project directory.
 	1 - as example1 is an empty system, you can add subject, objects (Files or Threads), permissions...
 	and do some actions, as read or write, based on your and your DB rules.
+	4 - same DB as in figure 13.6 [SB]
 
 # Important information:
 	1. The simulation can handle subjects and objects creation and deletion changes
 
 	2. You can login as any subject you wish, 
-	if the subject isn't exists in the system you should register by its name (ie add it to the system)
+	if the subject isn't exists in the system you, should register by its name (ie add it to the system)
 
 	3. In this model you can't add permissions by yourself directly, but you can try to read/ write
 	and if access accepted, the permission will be added automatically.
 
+	4. The program's behavior is like a loop - 
+		- in every iteration you can sign in as new user name, or the same as previous iteration.
+		- you can choose between the commands: read, write, add subject, add object
+		- in case of read cmd - you have to enter the object name, the position to start read from and how many bytes to read. 
+		if the action succeed, the data will be printed to your screen.
+		- in case of write cmd - you have to enter the object name, the position to start to write to, the string to write and how many bytes to write
+		You can check this action by the relevant read action
+		- in case of add a subject - you have to enter the new subject name
+		- in case of add an object - you have to enter the new object name, its type (ie Thread or File) and its dataset.
+		if the action succedd, you are the object's owner, in the next iteration you can try to get read/write access.
+		-if you want to exit the program, enter 0 when you asked to.
+
 # Simulation example:
-	See 'simulation_example.txt' for simulation example
+	See 'simulation_figure13.6_sb.txt' for simulation example.
+	You can see the next steps in the simulation output:
+	1. The system created with one subject : admin
+	2. login as admin and add a new subject, named John
+	3. login as John and read file G
+	4. Jhon write to file G (*-property) : "Hello"
+	5. Jhon read from file G : "Hello"
+	6. Jhon can't read from file H and I since those files in another dataset in the same CI of G
+	7. Jhon read from file A
+	8. Jhon can't read from file D since this file in another dataset in the same CI of A
+	9. Jhon add a new subject, named Jane
+	10. login as Jane and read file C and B (same DS)
+	11. Jane can't read from file E since this file in another dataset in the same CI of B and C
+	12. Jane read from file H and I
+	13. Jane can't read from file G since this file in another dataset in the same CI of H and I
+
+	============================================================================================================
+	Now we can see *-property: the system prevent an indirect flow of information that 
+	would cause a conflict : Jhon can't read the data from file G, that Jane can't read, and put it
+	in file B, that Jane can read 
+	============================================================================================================
+
+	14. login as Jhon and read the data from file G : "Hello"
+	15. John failed to write "Hello" to file B
