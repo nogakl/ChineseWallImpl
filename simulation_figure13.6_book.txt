@@ -1,0 +1,309 @@
+Plaese enter Database number (1-4)
+4
+Building the system .......
+Subject already exists!
+ConflictInterest already exists!
+Dataset already exists!
+Subject already exists!
+ConflictInterest already exists!
+Dataset already exists!
+Subject already exists!
+ConflictInterest already exists!
+Subject already exists!
+ConflictInterest already exists!
+Dataset already exists!
+Subject already exists!
+Subject already exists!
+Subject already exists!
+ConflictInterest already exists!
+Subject already exists!
+ConflictInterest already exists!
+Dataset already exists!
+Finished to build the system!
+Please enter your subject name
+admin
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+3
+Please enter subject name
+John
+Successto add subject
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+2
+Please enter your subject name
+John
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+2
+Please enter object name
+G
+Please enter position
+0
+Please enter num of bytes to write
+5
+Please enter string to write
+Hello
+Access Success
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+G
+Please enter position
+0
+Please enter num of bytes to read
+5
+Access Success
+Read from object : Hello
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+H
+Please enter position
+0
+Please enter num of bytes to read
+0
+Access Denied
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+I
+Please enter position
+0
+Please enter num of bytes to read
+0
+Access Denied
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+A
+Please enter position
+0
+Please enter num of bytes to read
+3
+Access Success
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+D
+Please enter position
+0
+Please enter num of bytes to read
+3
+Access Denied
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+3
+Please enter subject name
+Jane
+Successto add subject
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+2
+Please enter your subject name
+Jane
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+C
+Please enter position
+0
+Please enter num of bytes to read
+0
+Access Success
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+B
+Please enter position
+0
+Please enter num of bytes to read
+4
+Access Success
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+E
+Please enter position
+0
+Please enter num of bytes to read
+0
+Access Denied
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+H
+Please enter position
+0
+Please enter num of bytes to read
+3
+Access Success
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+I
+Please enter position
+0
+Please enter num of bytes to read
+1
+Access Success
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+G
+Please enter position
+0
+Please enter num of bytes to read
+5
+Access Denied
+Read from object :
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+2
+Please enter your subject name
+John
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+1
+Please enter object name
+G
+Please enter position
+0
+Please enter num of bytes to read
+5
+Access Success
+Read from object : Hello
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2
+1
+Please enter commad:
+1 - Read
+2 - Write
+3 - Add Subject
+4 - Add Object
+2
+Please enter object name
+B
+Please enter position
+0
+Please enter num of bytes to write
+5
+Please enter string to write
+Hello
+Access Denied
+to exit enter 0
+to continue with same username enter 1
+to continue with new username enter 2

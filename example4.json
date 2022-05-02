@@ -1,90 +1,90 @@
 {
-  "A": {
+  "obj1": {
     "name": "A",
     "type": "File",
     "dataset": "BankA",
     "conflictInterest": "CI1",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "B": {
+  "obj2": {
     "name": "B",
     "type": "File",
     "dataset": "BankA",
     "conflictInterest": "CI1",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "C": {
+  "obj3": {
     "name": "C",
     "type": "File",
     "dataset": "BankA",
     "conflictInterest": "CI1",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "D": {
+  "obj4": {
     "name": "D",
     "type": "File",
     "dataset": "BankB",
     "conflictInterest": "CI1",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "E": {
+  "obj5": {
     "name": "E",
     "type": "File",
     "dataset": "BankB",
     "conflictInterest": "CI1",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "F": {
+  "obj6": {
     "name": "F",
     "type": "File",
     "dataset": "GasA",
     "conflictInterest": "CI2",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "G": {
+  "obj7": {
     "name": "G",
     "type": "File",
     "dataset": "OilA",
     "conflictInterest": "CI3",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "H": {
+  "obj8": {
     "name": "H",
     "type": "File",
     "dataset": "OilB",
     "conflictInterest": "CI3",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
   },
-  "I": {
+  "obj9": {
     "name": "I",
     "type": "File",
     "dataset": "OilB",
     "conflictInterest": "CI3",
-    "owner": "subject1",
+    "owner": "admin",
     "read": [],
     "write": [],
     "execute": []
