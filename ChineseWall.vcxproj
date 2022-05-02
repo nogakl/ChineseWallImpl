@@ -165,10 +165,11 @@
     <ClInclude Include="jsoncpp\src\lib_json\json_tool.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="example1.json" />
     <None Include="example2.json" />
+    <None Include="example3.json" />
     <None Include="jsoncpp\src\lib_json\json_valueiterator.inl" />
-    <None Include="‏‏example3.json" />
+    <None Include="‏‏example1.json" />
+    <None Include="‏‏example4.json" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt.txt" />

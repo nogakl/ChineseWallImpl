@@ -2,7 +2,7 @@
   "obj1": {
     "name": "object1",
     "type": "File",
-    "dataset": "DS123",
+    "dataset": "DS1",
     "conflictInterest": "CI1",
     "owner": "subject1",
     "read": [],
@@ -24,6 +24,26 @@
     "type": "File",
     "dataset": "DS1",
     "conflictInterest": "CI1",
+    "owner": "subject2",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "obj4": {
+    "name": "object3",
+    "type": "Thread",
+    "dataset": "DS3",
+    "conflictInterest": "CI2",
+    "owner": "subject2",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "obj5": {
+    "name": "object3",
+    "type": "Thread",
+    "dataset": "DS3",
+    "conflictInterest": "CI2",
     "owner": "subject2",
     "read": [],
     "write": [],

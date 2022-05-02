@@ -91,13 +91,16 @@
     <None Include="jsoncpp\src\lib_json\json_valueiterator.inl">
       <Filter>3rd_party</Filter>
     </None>
+    <None Include="‏‏example1.json">
+      <Filter>DB</Filter>
+    </None>
     <None Include="example2.json">
       <Filter>DB</Filter>
     </None>
-    <None Include="‏‏example3.json">
+    <None Include="example3.json">
       <Filter>DB</Filter>
     </None>
-    <None Include="example1.json">
+    <None Include="‏‏example4.json">
       <Filter>DB</Filter>
     </None>
   </ItemGroup>

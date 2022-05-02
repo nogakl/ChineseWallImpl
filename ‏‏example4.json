@@ -1,0 +1,92 @@
+{
+  "A": {
+    "name": "A",
+    "type": "File",
+    "dataset": "BankA",
+    "conflictInterest": "CI1",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "B": {
+    "name": "B",
+    "type": "File",
+    "dataset": "BankA",
+    "conflictInterest": "CI1",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "C": {
+    "name": "C",
+    "type": "File",
+    "dataset": "BankA",
+    "conflictInterest": "CI1",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "D": {
+    "name": "D",
+    "type": "File",
+    "dataset": "BankB",
+    "conflictInterest": "CI1",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "E": {
+    "name": "E",
+    "type": "File",
+    "dataset": "BankB",
+    "conflictInterest": "CI1",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "F": {
+    "name": "F",
+    "type": "File",
+    "dataset": "GasA",
+    "conflictInterest": "CI2",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "G": {
+    "name": "G",
+    "type": "File",
+    "dataset": "OilA",
+    "conflictInterest": "CI3",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "H": {
+    "name": "H",
+    "type": "File",
+    "dataset": "OilB",
+    "conflictInterest": "CI3",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  },
+  "I": {
+    "name": "I",
+    "type": "File",
+    "dataset": "OilB",
+    "conflictInterest": "CI3",
+    "owner": "subject1",
+    "read": [],
+    "write": [],
+    "execute": []
+  }
+}

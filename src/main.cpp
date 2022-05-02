@@ -15,14 +15,56 @@
 #include "../include/Thread.h"
 
 using namespace ChineseWall;
+std::ifstream ifs;
+Json::Value root;
+std::string basicName = "obj";
+std::string objName = "";
+std::string ownerName = "";
+std::string readName = "";
+std::string writeName = "";
+std::string executeName = "";
+std::string datasetName = "";
+std::string ciName = "";
+std::string objType = "";
+int db = 0;
+Subject* userSubject = nullptr;
+std::string userSubjectName = "";
+
+/*
+* after opening the DB, this function parse the json file
+* and add subject, object and permissions base on it.
+* if there is an error returns 1, otherwise 0
+*/
+int buildTheSystem();
+
+/*
+* ============= Main Loop Handlers =============
+*/
+
+/*
+*to read, enter the object to read from, the start position of the readand how many bytes to read
+*/
+void handleReadCommand();
+/*
+* to write, enter the object to write to, the start position of writing, string to writeand how many bytes to write
+*/
+void handleWriteCommand();
+/*
+* to add subject, enter subject name to create
+*/
+void handleAddSubjectCommand();
+/*
+* to add object, enter object name to create, its type(File or Thread) and its Dataset
+*/
+void handleAddObjectCommand();
 
 int main()
 {
-	Json::Value root;
-	std::ifstream ifs;
-	int db = 0;
-
-	std::cout << "Plaese enter Database number (1-2)\n";
+	
+	/* 
+	* open data base at setup the system
+	*/
+	std::cout << "Plaese enter Database number (1-4)\n";
 	std::cin >> db;
 
 	ifs.open("example" + std::to_string(db) + ".json");
@@ -31,7 +73,60 @@ int main()
 	}
 
 	std::cout << "Building the system ....... \n";
+	if (buildTheSystem() != 0) return EXIT_FAILURE;
+	/*
+	* Main Loop : 
+	* 1. if the user want to exit : enter 1
+	* 2. the user login with subject name
+	* 3. the user enter the required command : Read | Write | Add subject | Add object
+	* 4. the user enter the relevant data for the command :
+	*	- to read, enter the object to read from, the start position of the read and how many bytes to read
+	*	- to write, enter the object to write to, the start position of writing, string to write and how many bytes to write
+	*	- to add subject, enter subject name to create
+	*	- to add object, enter object name to create, its type (File or Thread) and its Dataset
+	*/
+	int toExit = 2;
+	while (toExit != 0) {
+		userSubjectName = "";
+		if (toExit == 2) {
+			userSubject = nullptr;
+			/* gets the user name from cmd */
+			std::cout << "Please enter your subject name\n";
+			std::cin >> userSubjectName;
 
+			/* try to login to user name */
+			userSubject = Manager::Instance().GetSubject(userSubjectName);
+		}
+		if (userSubject != nullptr)
+		{
+			std::cout << "Please enter commad:\n1 - Read\n2 - Write\n3 - Add Subject\n4 - Add Object\n";
+			int cmd = 0;
+			std::cin >> cmd;
+			switch (cmd)
+			{
+			case 1:
+				handleReadCommand();
+				break;
+			case 2:
+				handleWriteCommand();
+				break;
+			case 3:
+				handleAddSubjectCommand();
+				break;
+			case 4:
+				handleAddObjectCommand();
+				break;
+			default:
+				std::cout << "OOPS! wrong command :\\";
+			}
+		}
+
+		std::cout << "to exit enter 0\nto continue with same username enter 1\nto continue with new username enter 2\n";
+		std::cin >> toExit;
+	}
+}
+
+int buildTheSystem() {
 	Json::CharReaderBuilder builder;
 	builder["collectComments"] = true;
 	JSONCPP_STRING errs;
@@ -39,16 +134,6 @@ int main()
 		std::cout << errs << std::endl;
 		return EXIT_FAILURE;
 	}
-
-	std::string basicName = "obj";
-	std::string objName = "";
-	std::string ownerName = "";
-	std::string readName = "";
-	std::string writeName = "";
-	std::string executeName = "";
-	std::string datasetName = "";
-	std::string ciName = "";
-	std::string objType = "";
 
 	int i = 1;
 	std::string fullName = basicName + std::to_string(i);
@@ -95,86 +180,65 @@ int main()
 	}
 
 	std::cout << "Finished to build the system!\n";
-	int toExit = 0;
-	while (toExit == 0) {
-		std::string userSubjectName = "";
-		std::cout << "Please enter your subject name\n";
-		std::cin >> userSubjectName;
-		auto userSubject = Manager::Instance().GetSubject(userSubjectName);
-		std::string userObjectName, dataset, objectType;
-		Object* userObject;
-		uint8_t bufferData[THREAD_MEMORY_SPACE] = { 0 };
-		int position = 0, numOfBytes = 0;
-		if (userSubject == nullptr)
-		{
-			std::cout << "Wrong subject name!\nTo try again enter 0, to exit 1\n";
-			std::cin >> toExit;
-			break;
-		}
-		else {
-			std::cout << "Please enter commad:\n1 - Read\n2 - Write\n3 - Add Subject\n4 - Add Object\n";
-			int cmd = 0;
-			std::cin >> cmd;
-			switch (cmd)
-			{
-			case 1:
-				std::cout << "Please enter object name\n";
-				std::cin >> userObjectName;
-
-				userObject = Manager::Instance().GetObject(userObjectName);
-				if (userObject == nullptr)
-				{
-					std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
-					std::cin >> toExit;
-				}
-				else {
-					std::cout << "Please enter position\n";
-					std::cin >> position;
-					std::cout << "Please enter num of bytes to read\n";
-					std::cin >> numOfBytes;
-					std::cout << "Access " << (userObject->Read(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
-					std::cout << "Read from object : " << bufferData << std::endl;
-				}
-				break;
-			case 2:
-				std::cout << "Please enter object name\n";
-				std::cin >> userObjectName;
-
-				userObject = Manager::Instance().GetObject(userObjectName);
-				if (userObject == nullptr)
-				{
-					std::cout << "Wrong object name!\nTo try again enter 0, to exit 1\n";
-					std::cin >> toExit;
-				}
-				std::cout << "Please enter position\n";
-				std::cin >> position;
-				std::cout << "Please enter num of bytes to write\n";
-				std::cin >> numOfBytes;
-				std::cout << "Please enter string to write\n";
-				std::cin >> bufferData;
-				std::cout << "Access " << (userObject->Write(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
-				break;
-			case 3:
-				std::cout << "Please enter subject name\n";
-				std::cin >> userObjectName;
-				std::cout << ((Manager::Instance().AddSubject(userObjectName) == Status::Success) ? "Success" : "Failed") << "to add subject\n";
-				break;
-			case 4:
-				std::cout << "Please enter object name\n";
-				std::cin >> userObjectName;
-				std::cout << "Please enter object type : File or Thread\n";
-				std::cin >> objectType;
-				std::cout << "Please enter dataset name\n";
-				std::cin >> dataset;
-				std::cout << ((Manager::Instance().AddObject(userObjectName, objectType, dataset, userSubjectName) == Status::Success) ? "Success" : "Failed") << "to add object\n";
-				break;
-			default:
-				std::cout << "OOPS! wrong command :\\";
-			}
-		}
-
-		std::cout << "to exit enter 1, to contain 0\n";
-		std::cin >> toExit;
-	}
+	return 0;
 }
 
+void handleReadCommand() {
+	std::string userObjectName;
+	Object* userObject;
+	uint8_t bufferData[THREAD_MEMORY_SPACE] = { 0 };
+	int position = 0, numOfBytes = 0;
+	std::cout << "Please enter object name\n";
+	std::cin >> userObjectName;
+
+	userObject = Manager::Instance().GetObject(userObjectName);
+	if (userObject != nullptr)
+	{
+		std::cout << "Please enter position\n";
+		std::cin >> position;
+		std::cout << "Please enter num of bytes to read\n";
+		std::cin >> numOfBytes;
+		std::cout << "Access " << (userObject->Read(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
+		std::cout << "Read from object : " << bufferData << std::endl;
+	}
+	else std::cout << "Wrong object name!\n";
+}
+void handleWriteCommand() {
+	std::string userObjectName, dataset, objectType;
+	Object* userObject;
+	uint8_t bufferData[THREAD_MEMORY_SPACE] = { 0 };
+	int position = 0, numOfBytes = 0;
+	userSubject = Manager::Instance().GetSubject(userSubjectName);
+
+	std::cout << "Please enter object name\n";
+	std::cin >> userObjectName;
+
+	userObject = Manager::Instance().GetObject(userObjectName);
+	if (userObject != nullptr)
+	{
+		std::cout << "Please enter position\n";
+		std::cin >> position;
+		std::cout << "Please enter num of bytes to write\n";
+		std::cin >> numOfBytes;
+		std::cout << "Please enter string to write\n";
+		std::cin >> bufferData;
+		std::cout << "Access " << (userObject->Write(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
+	}
+	else std::cout << "Wrong object name!\n";
+}
+void handleAddSubjectCommand() {
+	std::string userObjectName;
+	std::cout << "Please enter subject name\n";
+	std::cin >> userObjectName;
+	std::cout << ((Manager::Instance().AddSubject(userObjectName) == Status::Success) ? "Success" : "Failed") << "to add subject\n";
+}
+void handleAddObjectCommand() {
+	std::string userObjectName, dataset, objectType;
+	std::cout << "Please enter object name\n";
+	std::cin >> userObjectName;
+	std::cout << "Please enter object type : File or Thread\n";
+	std::cin >> objectType;
+	std::cout << "Please enter dataset name\n";
+	std::cin >> dataset;
+	std::cout << ((Manager::Instance().AddObject(userObjectName, objectType, dataset, userSubjectName) == Status::Success) ? "Success" : "Failed") << "to add object\n";
+}
