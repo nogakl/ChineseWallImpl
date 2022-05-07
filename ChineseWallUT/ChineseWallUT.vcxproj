@@ -39,6 +39,7 @@
     <ClCompile Include="CommonTests.cpp" />
     <ClCompile Include="ConflictInterestTests.cpp" />
     <ClCompile Include="DatasetTests.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="ManagerTests.cpp" />
     <ClCompile Include="ObjectTests.cpp" />
     <ClCompile Include="pch.cpp">

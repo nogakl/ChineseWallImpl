@@ -25,10 +25,10 @@
  An Implemetation For Chinese Wall Model
 
 # Running command:
-	Open the command line from the project directory, enter "Release\ChineseWall" (same for Debug)
+	Open the command line from the project directory, cd to Release and enter "ChineseWall" (same for Debug)
 
 # Running UT command:
-	Open the command line from the project directory, enter "ChineseWallUT\Debug\ChineseWallUT"
+	Open the command line from the project directory, cd to Release and enter "ChineseWallUT" (same for Debug)
 
 
 # Simulation Database:

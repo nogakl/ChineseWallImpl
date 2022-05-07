@@ -105,6 +105,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="readme.txt.txt" />
+    <Text Include="README.txt" />
   </ItemGroup>
 </Project>
