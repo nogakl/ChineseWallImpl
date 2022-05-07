@@ -1,7 +1,7 @@
-﻿#include "../include/Dataset.h"
-#include "../include/Subject.h"
-#include "../include/Common.h"
-#include "../include/Thread.h"
+﻿#include "Dataset.h"
+#include "Subject.h"
+#include "Common.h"
+#include "Thread.h"
 
 namespace ChineseWall {
 	Thread::Thread(std::string name, Dataset& dataset, Subject& owner) :

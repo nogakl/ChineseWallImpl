@@ -1,7 +1,7 @@
-﻿#include "../include/Dataset.h"
-#include "../include/Subject.h"
-#include "../include/Common.h"
-#include "../include/File.h"
+﻿#include "Dataset.h"
+#include "Subject.h"
+#include "Common.h"
+#include "File.h"
 
 namespace ChineseWall {
     File::File(std::string name, Dataset& dataset, Subject& owner) :

@@ -101,7 +101,7 @@ namespace ChineseWall {
 		 * @param name - req name of Object
 		 * @return Object object if exists, nullptr otherwise
 		 */
-		Object* GetObject(std::string name);
+		Object* GetObjectCWM(std::string name);
 		/**
 		 * Get DS object by its name
 		 *

@@ -1,7 +1,6 @@
-﻿
-#include "../include/Subject.h"
-#include "../include/ConflictInterest.h"
-#include "../include/Dataset.h"
+﻿#include "Subject.h"
+#include "ConflictInterest.h"
+#include "Dataset.h"
 
 namespace ChineseWall {
 	Dataset::Dataset(std::string name, ConflictInterest& conflictInterest) :

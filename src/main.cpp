@@ -1,18 +1,22 @@
 ﻿
 #include <iostream>
-#include "../jsoncpp/include/json/json.h"
+#include "json/json.h"
 #include <fstream>
 #include <string>
 #include <iostream>
 #include <filesystem>
-#include "../jsoncpp/include/json/value.h"
-#include "../include/Subject.h"
-#include "../include/Dataset.h"
-#include "../include/ConflictInterest.h"
-#include "../include/Object.h"
-#include "../include/Manager.h"
-#include "../include/File.h"
-#include "../include/Thread.h"
+#include "json/value.h"
+#include "Subject.h"
+#include "Dataset.h"
+#include "ConflictInterest.h"
+#include "Object.h"
+#include "Manager.h"
+#include "File.h"
+#include "Thread.h"
+#include <Windows.h>
+
+
+HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 
 using namespace ChineseWall;
 std::ifstream ifs;
@@ -117,12 +121,16 @@ int main()
 				handleAddObjectCommand();
 				break;
 			default:
-				std::cout << "OOPS! wrong command :\\";
+				SetConsoleTextAttribute(h, 4);
+				std::cout << "OOPS! wrong command :\n";
+				SetConsoleTextAttribute(h, 7);
 			}
 		}
 
+		SetConsoleTextAttribute(h, 3);
 		std::cout << "to exit enter 0\nto continue with same username enter 1\nto continue with new username enter 2\n";
 		std::cin >> toExit;
+		SetConsoleTextAttribute(h, 7);
 	}
 }
 
@@ -149,7 +157,7 @@ int buildTheSystem() {
 		Manager::Instance().AddDataset(datasetName, ciName);
 		Manager::Instance().AddObject(objName, objType, datasetName, ownerName);
 
-		auto obj = Manager::Instance().GetObject(objName);
+		auto obj = Manager::Instance().GetObjectCWM(objName);
 
 		int j = 0;
 		while (root[fullName]["read"][j].isNull() != true) {
@@ -191,29 +199,41 @@ void handleReadCommand() {
 	std::cout << "Please enter object name\n";
 	std::cin >> userObjectName;
 
-	userObject = Manager::Instance().GetObject(userObjectName);
+	userObject = Manager::Instance().GetObjectCWM(userObjectName);
 	if (userObject != nullptr)
 	{
 		std::cout << "Please enter position\n";
 		std::cin >> position;
 		std::cout << "Please enter num of bytes to read\n";
 		std::cin >> numOfBytes;
-		std::cout << "Access " << (userObject->Read(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
-		std::cout << "Read from object : " << bufferData << std::endl;
+		if (userObject->Read(*userSubject, position, bufferData, numOfBytes) == Status::Success)
+		{
+			SetConsoleTextAttribute(h, 10);
+			std::cout << "Access Success" << std::endl;
+			std::cout << "Read from object : " << bufferData << std::endl;
+		}
+		else {
+			SetConsoleTextAttribute(h, 4);
+			std::cout << "Access Denied" << std::endl;
+		}
+		SetConsoleTextAttribute(h, 7);
 	}
-	else std::cout << "Wrong object name!\n";
+	else {
+		SetConsoleTextAttribute(h, 4);
+		std::cout << "Wrong object name!\n";
+		SetConsoleTextAttribute(h, 7);
+	}
 }
 void handleWriteCommand() {
 	std::string userObjectName, dataset, objectType;
 	Object* userObject;
 	uint8_t bufferData[THREAD_MEMORY_SPACE] = { 0 };
 	int position = 0, numOfBytes = 0;
-	userSubject = Manager::Instance().GetSubject(userSubjectName);
 
 	std::cout << "Please enter object name\n";
 	std::cin >> userObjectName;
 
-	userObject = Manager::Instance().GetObject(userObjectName);
+	userObject = Manager::Instance().GetObjectCWM(userObjectName);
 	if (userObject != nullptr)
 	{
 		std::cout << "Please enter position\n";
@@ -222,9 +242,23 @@ void handleWriteCommand() {
 		std::cin >> numOfBytes;
 		std::cout << "Please enter string to write\n";
 		std::cin >> bufferData;
-		std::cout << "Access " << (userObject->Write(*userSubject, position, bufferData, numOfBytes) == Status::Success ? "Success" : "Denied") << std::endl;
+		if (userObject->Write(*userSubject, position, bufferData, numOfBytes) == Status::Success) {
+			SetConsoleTextAttribute(h, 10);
+			std::cout << "Access Success" << std::endl;
+
+		}
+		else {
+			SetConsoleTextAttribute(h, 4);
+			std::cout << "Access Denied" << std::endl;
+
+		}
+		SetConsoleTextAttribute(h, 7);
 	}
-	else std::cout << "Wrong object name!\n";
+	else { 
+		SetConsoleTextAttribute(h, 4);
+		std::cout << "Wrong object name!\n"; 
+		SetConsoleTextAttribute(h, 7);
+	}
 }
 void handleAddSubjectCommand() {
 	std::string userObjectName;
@@ -240,5 +274,5 @@ void handleAddObjectCommand() {
 	std::cin >> objectType;
 	std::cout << "Please enter dataset name\n";
 	std::cin >> dataset;
-	std::cout << ((Manager::Instance().AddObject(userObjectName, objectType, dataset, userSubjectName) == Status::Success) ? "Success" : "Failed") << "to add object\n";
+	std::cout << ((Manager::Instance().AddObject(userObjectName, objectType, dataset, userSubject->GetName()) == Status::Success) ? "Success" : "Failed") << "to add object\n";
 }

@@ -23,6 +23,9 @@
 
  ================================================================================================
  An Implemetation For Chinese Wall Model
+ ~~~~~~~~~
+ You can clone (ssh) the code - git@github.com:nogakl/ChineseWallImpl.git
+ ~~~~~~~~~
 
 # Running command:
 	Open the command line from the project directory, cd to Release and enter "ChineseWall" (same for Debug)
@@ -36,8 +39,11 @@
 	1 - as example1 is an empty system, you can add subject, objects (Files or Threads), permissions...
 	and do some actions, as read or write, based on your and your DB rules.
 	4 - same DB as in figure 13.6 [SB]
+	(the other DBs are generic)
 
 # Important information:
+	0. Please read the document "הצעה לממן התכנותי" before you continue.
+
 	1. The simulation can handle subjects and objects creation and deletion changes
 
 	2. You can login as any subject you wish, 

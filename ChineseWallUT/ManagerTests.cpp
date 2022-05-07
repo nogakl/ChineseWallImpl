@@ -57,12 +57,12 @@ TEST(DsUT, ManagerGeneral) {
 	EXPECT_EQ(subPtr->AddObject(t_objName5, FILE_TYPE, t_dsName4), Status::Success);
 	EXPECT_EQ(subPtr->AddObject(t_objName6, FILE_TYPE, t_dsName4), Status::Success);
 
-	objPtr = Manager::Instance().GetObject(t_objName);
-	objPtr2 = Manager::Instance().GetObject(t_objName2);
-	objPtr3 = Manager::Instance().GetObject(t_objName3);
-	objPtr4 = Manager::Instance().GetObject(t_objName4);
-	objPtr5 = Manager::Instance().GetObject(t_objName5);
-	objPtr6 = Manager::Instance().GetObject(t_objName6);
+	objPtr = Manager::Instance().GetObjectCWM(t_objName);
+	objPtr2 = Manager::Instance().GetObjectCWM(t_objName2);
+	objPtr3 = Manager::Instance().GetObjectCWM(t_objName3);
+	objPtr4 = Manager::Instance().GetObjectCWM(t_objName4);
+	objPtr5 = Manager::Instance().GetObjectCWM(t_objName5);
+	objPtr6 = Manager::Instance().GetObjectCWM(t_objName6);
 
 	EXPECT_EQ(objPtr->Read(*subPtr, 0, dataIn, 0), Status::Success);
 	EXPECT_EQ(objPtr->Write(*subPtr, 0, dataIn, 0), Status::Success);

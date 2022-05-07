@@ -1,10 +1,10 @@
-﻿#include "../include/Subject.h"
-#include "../include/Dataset.h"
-#include "../include/ConflictInterest.h"
-#include "../include/Object.h"
-#include "../include/File.h"
-#include "../include/Thread.h"
-#include "..\include\Manager.h"
+﻿#include "Subject.h"
+#include "Dataset.h"
+#include "ConflictInterest.h"
+#include "Object.h"
+#include "File.h"
+#include "Thread.h"
+#include "Manager.h"
 
 namespace ChineseWall {
 
@@ -128,15 +128,15 @@ namespace ChineseWall {
 	Subject* Manager::GetSubject(std::string name) {
 		auto it = m_subjects.find(name);
 		if (it == m_subjects.end()) {
-			printf("subject isn't exists in the system!");
+			printf("subject isn't exists in the system!\n");
 			return nullptr;
 		}
 		return m_subjects.at(name).get();
 	}
-	Object* Manager::GetObject(std::string name) {
+	Object* Manager::GetObjectCWM(std::string name) {
 		auto it = m_objects.find(name);
 		if (it == m_objects.end()) {
-			printf("object isn't exists in the system!");
+			printf("object isn't exists in the system!\n");
 			return nullptr;
 		}
 		return m_objects.at(name).get();
@@ -144,7 +144,7 @@ namespace ChineseWall {
 	Dataset* Manager::GetDataset(std::string name) {
 		auto it = m_datasets.find(name);
 		if (it == m_datasets.end()) {
-			printf("dataset isn't exists in the system!");
+			printf("dataset isn't exists in the system!\n");
 			return nullptr;
 		}
 		return m_datasets.at(name).get();
@@ -152,7 +152,7 @@ namespace ChineseWall {
 	ConflictInterest* Manager::GetConflictInterest(std::string name) {
 		auto it = m_conflictsInterests.find(name);
 		if (it == m_conflictsInterests.end()) {
-			printf("ci isn't exists in the system!");
+			printf("ci isn't exists in the system!\n");
 			return nullptr;
 		}
 		return m_conflictsInterests.at(name).get();

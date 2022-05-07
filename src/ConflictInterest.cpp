@@ -1,8 +1,8 @@
-﻿#include "../include/Subject.h"
-#include "..\include\ConflictInterest.h"
-#include "../include/Dataset.h"
-#include "../include/Object.h"
-#include "..\include\Manager.h"
+﻿#include "Subject.h"
+#include "ConflictInterest.h"
+#include "Dataset.h"
+#include "Object.h"
+#include "Manager.h"
 
 namespace ChineseWall {
     ConflictInterest::ConflictInterest(std::string name) : 

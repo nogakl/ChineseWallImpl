@@ -1,7 +1,7 @@
-#include "../include/Dataset.h"
-#include "../include/Subject.h"
-#include "../include/Common.h"
-#include "../include/Object.h"
+#include "Dataset.h"
+#include "Subject.h"
+#include "Common.h"
+#include "Object.h"
 namespace ChineseWall {
 	Object::Object(std::string name, Dataset& dataset, Subject& owner) :
 		m_name(name),
