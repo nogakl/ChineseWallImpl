@@ -23,15 +23,22 @@
 
  ================================================================================================
  An Implemetation For Chinese Wall Model
+
+ First step: unzip the files (you can run the program without this step)
+ The directory in this project is zipped and separated into several different folders due to space limitaion in the task submission system.
+ You should extract the folders and than copy the context to the project directory.
+ For example, extract "src" zipped folder, and than copy "src" directory inside it to the project directory.
+
  ~~~~~~~~~
- You can clone (ssh) the code - git@github.com:nogakl/ChineseWallImpl.git
+ To see the project sln in VS: Get Main Project sln, Unit Tests sln, relevant packages and jsoncpp third party folders
+ clone (ssh) the code - git@github.com:nogakl/ChineseWallImpl.git
  ~~~~~~~~~
 
 # Running command:
-	Open the command line from the project directory, enter "Release\ChineseWall" (same for Debug)
+	Open the command line from the project directory, enter "ChineseWall" (release mode)
 
 # Running UT command:
-	Open the command line from the project directory, enter "Release\ChineseWallUT" (same for Debug)
+	Open the command line from the project directory, enter "ChineseWallUT" (release mode)
 
 
 # Simulation Database:
